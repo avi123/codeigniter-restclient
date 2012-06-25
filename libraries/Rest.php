@@ -2,13 +2,15 @@
 /**
  * CodeIgniter REST Class
  *
- * Mske REST requests to RESTful services with simple syntax.
+ * Make REST requests to RESTful services with simple syntax.
  *
  * @package        	CodeIgniter
  * @subpackage    	Libraries
  * @category    	Libraries
  * @author        	Philip Sturgeon
  * @created			04/06/2009
+ * @edited          06/25/2012
+ * @editedby        Avi Berkowitz
  * @license         http://philsturgeon.co.uk/code/dbad-license
  * @link			http://getsparks.org/packages/restclient/show
  */
@@ -20,6 +22,7 @@ class REST
     protected $supported_formats = array(
 		'xml' 				=> 'application/xml',
 		'json' 				=> 'application/json',
+        'json_array'        => 'application/json',
 		'serialize' 		=> 'application/vnd.php.serialized',
 		'php' 				=> 'text/plain',
     	'csv'				=> 'text/csv'
@@ -306,6 +309,12 @@ class REST
     protected function _json($string)
     {
     	return json_decode(trim($string));
+    }
+
+    // Encode as JSON Array
+    protected function _json_array($string)
+    {
+    	return json_decode(trim($string),true);
     }
 
     // Encode as Serialized array
