@@ -23,6 +23,7 @@ class REST
 		'xml' 				=> 'application/xml',
 		'json' 				=> 'application/json',
         'json_array'        => 'application/json',
+        'json_raw'          => 'application/json',
 		'serialize' 		=> 'application/vnd.php.serialized',
 		'php' 				=> 'text/plain',
     	'csv'				=> 'text/csv'
@@ -315,6 +316,12 @@ class REST
     protected function _json_array($string)
     {
     	return json_decode(trim($string),true);
+    }
+
+    // Encode as JSON Raw
+    protected function _json_raw($string)
+    {
+    	return trim($string);
     }
 
     // Encode as Serialized array
