@@ -120,6 +120,10 @@ class REST
 		$this->_ci->curl->http_header($name, $key);
 	}
 
+    public function charset($charset) {
+        $this->_ci->curl->http_header('Accept-Charset', $charset);
+    }
+
     public function language($lang)
 	{
 		if (is_array($lang))
